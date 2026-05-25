@@ -8,6 +8,7 @@ namespace unigame.staticecs.Time {
         public float Time;
         public float UnscaledTime;
         public float FixedTime;
+        public float Now;
         public float TimeScale;
         public int FrameCount;
 
@@ -19,6 +20,7 @@ namespace unigame.staticecs.Time {
                 Time = 0f,
                 UnscaledTime = 0f,
                 FixedTime = 0f,
+                Now = 0f,
                 TimeScale = 1f,
                 FrameCount = 0
             };
@@ -31,6 +33,7 @@ namespace unigame.staticecs.Time {
             Time = 0f;
             UnscaledTime = 0f;
             FixedTime = 0f;
+            Now = 0f;
             TimeScale = 1f;
             FrameCount = 0;
         }

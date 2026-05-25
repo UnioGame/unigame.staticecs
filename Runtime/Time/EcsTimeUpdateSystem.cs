@@ -13,6 +13,7 @@ namespace unigame.staticecs.Time {
             time.UnscaledDeltaTime = unscaledDelta;
             time.Time += scaledDelta;
             time.UnscaledTime += unscaledDelta;
+            time.Now += scaledDelta;
             time.FrameCount++;
         }
     }
