@@ -2,6 +2,7 @@ using NUnit.Framework;
 using unigame.staticecs.Random;
 
 namespace unigame.staticecs.Tests {
+    [TestFixture]
     public sealed class EcsRngTests {
         [Test]
         public void FromSeed_Same_Seed_Produces_Same_Sequence() {

@@ -2,6 +2,7 @@ using NUnit.Framework;
 using unigame.staticecs.Time;
 
 namespace unigame.staticecs.Tests {
+    [TestFixture]
     public sealed class EcsTimeTests {
         [Test]
         public void Default_Has_TimeScale_One() {
