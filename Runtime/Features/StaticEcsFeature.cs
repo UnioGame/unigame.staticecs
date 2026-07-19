@@ -1,12 +1,13 @@
 using FFS.Libraries.StaticEcs;
 
 namespace UniGame.StaticEcs {
-    public abstract class StaticEcsFeature<TWorld> : IStaticEcsFeature<TWorld>
+    /// <summary>Base class for features that own Static ECS type registration.</summary>
+    public abstract class StaticEcsFeature<TWorld> : IStaticEcsTypeFeature<TWorld>
         where TWorld : struct, IWorldType {
+        /// <inheritdoc />
         public virtual string FeatureName => GetType().Name;
 
-        public virtual bool IsEnabled => true;
-
-        public virtual void RegisterTypes(World<TWorld>.TypeRegistrar types) { }
+        /// <inheritdoc />
+        public abstract void RegisterTypes(World<TWorld>.TypeRegistrar types);
     }
 }
