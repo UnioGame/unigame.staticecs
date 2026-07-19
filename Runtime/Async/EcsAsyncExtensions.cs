@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs.Async {
+namespace UniGame.StaticEcs.Async {
     public static class EcsAsyncExtensions {
         public static async UniTask<bool> WaitForComponent<TWorld, TComponent>(
             EntityGID gid,

@@ -1,7 +1,7 @@
 using FFS.Libraries.StaticEcs;
 using UnityTime = UnityEngine.Time;
 
-namespace unigame.staticecs.Time {
+namespace UniGame.StaticEcs.Time {
     public sealed class EcsTimeUpdateSystem<TWorld> : ISystem
         where TWorld : struct, IWorldType {
         public void Update() {

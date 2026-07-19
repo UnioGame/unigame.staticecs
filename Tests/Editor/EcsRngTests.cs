@@ -1,7 +1,8 @@
 using NUnit.Framework;
-using unigame.staticecs.Random;
 
-namespace unigame.staticecs.Tests {
+namespace UniGame.StaticEcs.Tests {
+    using Random;
+
     [TestFixture]
     public sealed class EcsRngTests {
         [Test]

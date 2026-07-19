@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs {
+namespace UniGame.StaticEcs {
     public interface IStaticEcsFeature<TWorld>
         where TWorld : struct, IWorldType {
         string FeatureName { get; }

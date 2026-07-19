@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs {
+namespace UniGame.StaticEcs {
     public abstract class StaticEcsFeature<TWorld> : IStaticEcsFeature<TWorld>
         where TWorld : struct, IWorldType {
         public virtual string FeatureName => GetType().Name;

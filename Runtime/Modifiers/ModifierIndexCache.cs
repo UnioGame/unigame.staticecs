@@ -1,4 +1,4 @@
-namespace unigame.staticecs.Modifiers {
+namespace UniGame.StaticEcs.Modifiers {
     public static class ModifierFlagCache<TWorld, TStat> {
         private static ModifierRegistry _registry;
         private static ulong _flag;

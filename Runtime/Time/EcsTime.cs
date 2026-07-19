@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs.Time {
+namespace UniGame.StaticEcs.Time {
     public struct EcsTime : IResource {
         public float DeltaTime;
         public float UnscaledDeltaTime;

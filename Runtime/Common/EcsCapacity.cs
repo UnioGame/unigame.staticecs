@@ -1,4 +1,4 @@
-namespace unigame.staticecs.Common {
+namespace UniGame.StaticEcs.Common {
     public static class EcsCapacity {
         public const int DefaultMultiCapacity = 4;
         public const int DefaultMultiMaxCapacity = 32;

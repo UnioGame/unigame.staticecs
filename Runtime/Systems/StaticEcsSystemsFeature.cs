@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs {
+namespace UniGame.StaticEcs {
     public abstract class StaticEcsSystemsFeature<TWorld, TSystemsType> :
         StaticEcsFeature<TWorld>,
         IStaticEcsSystemsFeature<TWorld, TSystemsType>

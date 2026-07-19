@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs.Time {
+namespace UniGame.StaticEcs.Time {
     public sealed class EcsTimeFeature<TWorld> :
         StaticEcsFeature<TWorld>,
         IStaticEcsSystemsFeature<TWorld, StaticEcsUpdateSystems>,

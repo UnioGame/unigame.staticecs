@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs {
+namespace UniGame.StaticEcs {
     public struct StaticEcsUpdateSystems : ISystemsType { }
 
     public struct StaticEcsFixedUpdateSystems : ISystemsType { }

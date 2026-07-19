@@ -1,7 +1,7 @@
 using System;
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs.Modifiers {
+namespace UniGame.StaticEcs.Modifiers {
     public delegate void ModifierSourceCleanup(EntityGID source, EntityGID target);
 
     public sealed class ModifierRegistry : IResource {

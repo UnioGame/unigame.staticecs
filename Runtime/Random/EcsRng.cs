@@ -1,7 +1,7 @@
 using System;
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs.Random {
+namespace UniGame.StaticEcs.Random {
     public struct EcsRng : IResource {
         public uint State;
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs {
+namespace UniGame.StaticEcs {
     public static class StaticEcsFeatureRunner {
         public static void RegisterTypes<TWorld>(IReadOnlyList<IStaticEcsFeature<TWorld>> features)
             where TWorld : struct, IWorldType {

@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs.Random {
+namespace UniGame.StaticEcs.Random {
     public sealed class EcsRngFeature<TWorld> : StaticEcsFeature<TWorld>
         where TWorld : struct, IWorldType {
         private readonly uint _seed;

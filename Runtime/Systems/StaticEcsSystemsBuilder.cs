@@ -1,6 +1,6 @@
 using FFS.Libraries.StaticEcs;
 
-namespace unigame.staticecs {
+namespace UniGame.StaticEcs {
     public readonly struct StaticEcsSystemsBuilder<TWorld, TSystemsType>
         where TWorld : struct, IWorldType
         where TSystemsType : struct, ISystemsType {

@@ -1,7 +1,8 @@
 using NUnit.Framework;
-using unigame.staticecs.Time;
 
-namespace unigame.staticecs.Tests {
+namespace UniGame.StaticEcs.Tests {
+    using Time;
+
     [TestFixture]
     public sealed class EcsTimeTests {
         [Test]
