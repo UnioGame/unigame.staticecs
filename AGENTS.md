@@ -9,7 +9,7 @@
 ## Features and systems
 
 - `IStaticEcsFeature<TWorld>` owns identity; `IStaticEcsTypeFeature<TWorld>` owns synchronous type registration.
-- A concrete `StaticEcsFeature<TWorld>` must implement `RegisterTypes`; do not add empty virtual lifecycle hooks.
+- A concrete `StaticEcsFeature<TWorld>` must implement `RegisterTypes`. Override the base `Destroy()` hook only when the feature owns runtime state that needs cleanup.
 - `StaticEcsSystemsBuilder` must accept both struct and class systems. Do not introduce `class` or `new()` constraints.
 - Implement only the `ISystem` lifecycle methods a system uses. Reflection discovers omitted methods and skips them.
 
