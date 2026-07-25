@@ -1,22 +1,17 @@
-using FFS.Libraries.StaticEcs;
-
 namespace UniGame.StaticEcs
 {
-    /// <summary>Base class for features that own Static ECS type registration.</summary>
-    public abstract class StaticEcsFeature<TWorld> :
-        IStaticEcsTypeFeature<TWorld>,
-        IStaticEcsDestroyFeature<TWorld>
+    using Cysharp.Threading.Tasks;
+    using FFS.Libraries.StaticEcs;
+    using UniGame.Core.Runtime;
+
+    /// <summary>Base class for programmatic Static ECS feature composition.</summary>
+    public abstract class StaticEcsFeature<TWorld> : IStaticEcsFeature<TWorld>
         where TWorld : struct, IWorldType
     {
         /// <inheritdoc />
         public virtual string FeatureName => GetType().Name;
 
         /// <inheritdoc />
-        public abstract void RegisterTypes(World<TWorld>.TypeRegistrar types);
-
-        /// <inheritdoc />
-        public virtual void Destroy()
-        {
-        }
+        public abstract UniTask InitializeAsync(ILifeTime lifeTime);
     }
 }

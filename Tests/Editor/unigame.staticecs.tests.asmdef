@@ -3,7 +3,10 @@
     "rootNamespace": "unigame.staticecs.Tests",
     "references": [
         "unigame.staticecs",
-        "FFS.StaticEcs"
+        "unigame.staticecs.testsupport",
+        "unigame.unicore.runtime",
+        "FFS.StaticEcs",
+        "UniTask"
     ],
     "includePlatforms": [
         "Editor"

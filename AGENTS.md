@@ -2,16 +2,24 @@
 
 ## Layer
 
-- Keep this package pure Static ECS: no Unity, UniTask, project, or `unigame.staticecs.unity` dependency.
+- Keep this package free of direct Unity API, project, `Main`, `IContext`, and
+  `unigame.staticecs.unity` usage. UniTask and `unigame.unicore.runtime` are approved;
+  UniCore supplies `ILifeTime` for feature initialization.
 - Do not reference the default `Main` world here. Generic-on-world APIs remain generic.
 - Put only reusable contracts, builders, resources, and registries in this package.
 
 ## Features and systems
 
-- `IStaticEcsFeature<TWorld>` owns identity; `IStaticEcsTypeFeature<TWorld>` owns synchronous type registration.
-- A concrete `StaticEcsFeature<TWorld>` must implement `RegisterTypes`. Override the base `Destroy()` hook only when the feature owns runtime state that needs cleanup.
-- `StaticEcsSystemsBuilder` must accept both struct and class systems. Do not introduce `class` or `new()` constraints.
+- `IStaticEcsFeature<TWorld>` has one `InitializeAsync(ILifeTime)` lifecycle entry point.
+- The supplied lifetime is the exact lifetime of the current world. Use its token only
+  for cancellable operations and register initialization-owned cleanup on it.
+- A concrete `StaticEcsFeature<TWorld>` publishes resources directly and adds only the systems it owns.
+- Keep systems parameterless. Do not introduce `class` or `new()` constraints.
 - Implement only the `ISystem` lifecycle methods a system uses. Reflection discovers omitted methods and skips them.
+- Ordinary concrete ECS marker types are discovered by `RegisterAll` from enabled feature assemblies. Closed generic constructions use assembly registrars in Unity-facing packages.
+- At registration boundaries, write every closed type and registry registration as a separate statement. Do not use fluent registration chains. Query construction follows its own formatting rules.
+- Construct every resource in a named local before `SetResource`. Do not put constructors,
+  object initializers, conditional expressions, or factory calls inside the registration call.
 
 ## Documentation
 

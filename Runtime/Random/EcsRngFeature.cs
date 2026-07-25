@@ -1,40 +1,62 @@
-using FFS.Libraries.StaticEcs;
-
 namespace UniGame.StaticEcs.Random
 {
+    using Cysharp.Threading.Tasks;
+    using FFS.Libraries.StaticEcs;
+    using UniGame.Core.Runtime;
+
     /// <summary>Registers a world-scoped random number generator resource.</summary>
-    public class EcsRngFeature<TWorld> : StaticEcsFeature<TWorld>
+    public class EcsRngFeature<TWorld> :
+        StaticEcsFeature<TWorld>
         where TWorld : struct, IWorldType
     {
-        /// <summary>Uses the serialized seed instead of a time-derived seed.</summary>
+        /// <summary>Whether startup uses the explicit seed.</summary>
         public bool useFixedSeed;
 
-        /// <summary>Deterministic seed used when <see cref="useFixedSeed"/> is enabled.</summary>
+        /// <summary>Seed used when fixed seeding is enabled.</summary>
         public uint seed = 1;
 
-        /// <summary>Creates a time-seeded random feature.</summary>
-        public EcsRngFeature()
-        {
-            useFixedSeed = false;
-        }
-
-        /// <summary>Creates a deterministically seeded random feature.</summary>
-        public EcsRngFeature(uint seed)
-        {
-            this.seed = seed;
-            useFixedSeed = true;
-        }
-
         /// <inheritdoc />
-        public override void RegisterTypes(World<TWorld>.TypeRegistrar types)
+        public override UniTask InitializeAsync(ILifeTime lifeTime)
         {
             if (World<TWorld>.HasResource<EcsRng>())
             {
-                return;
+                return UniTask.CompletedTask;
             }
 
-            var rng = useFixedSeed ? EcsRng.FromSeed(seed) : EcsRng.FromCurrentTime();
+            if (World<TWorld>.HasResource<EcsRngConfig>())
+            {
+                var configured = World<TWorld>.GetResource<EcsRngConfig>();
+                var configuredRng = configured.UseFixedSeed
+                    ? EcsRng.FromSeed(configured.Seed)
+                    : EcsRng.FromCurrentTime();
+
+                World<TWorld>.SetResource(configuredRng);
+                return UniTask.CompletedTask;
+            }
+
+            var config = new EcsRngConfig
+            {
+                UseFixedSeed = useFixedSeed,
+                Seed = seed,
+            };
+
+            var rng = useFixedSeed
+                ? EcsRng.FromSeed(seed)
+                : EcsRng.FromCurrentTime();
+
+            World<TWorld>.SetResource(config);
             World<TWorld>.SetResource(rng);
+            return UniTask.CompletedTask;
         }
+    }
+
+    /// <summary>Controls deterministic or time-derived ECS random initialization.</summary>
+    public sealed class EcsRngConfig : IResource
+    {
+        /// <summary>Whether startup uses the explicit seed.</summary>
+        public bool UseFixedSeed;
+
+        /// <summary>Seed used when fixed seeding is enabled.</summary>
+        public uint Seed = 1;
     }
 }

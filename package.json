@@ -4,7 +4,7 @@
   "displayName": "UniGame Static ECS",
   "description": "Static ECS runtime tooling and bootstrap for UniGame projects",
   "unity": "2023.2",
-  "version": "2026.0.0",
+  "version": "2026.0.1",
   "license": "MIT",
   "keywords": [
     "unigame",
@@ -13,6 +13,8 @@
     "bootstrap"
   ],
   "dependencies": {
-    "com.felid-force-studios.static-ecs": "2.2.2"
+    "com.felid-force-studios.static-ecs": "2.2.2",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.unigame.unicore": "2025.0.24"
   }
 }
