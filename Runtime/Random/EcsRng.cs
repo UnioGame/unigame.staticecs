@@ -6,9 +6,8 @@ namespace UniGame.StaticEcs.Random {
         public uint State;
 
         public static EcsRng FromSeed(uint seed) {
-            if (seed == 0u) {
+            if (seed == 0u)
                 seed = 0x9E3779B9u;
-            }
 
             return new EcsRng { State = seed };
         }
@@ -20,9 +19,8 @@ namespace UniGame.StaticEcs.Random {
         }
 
         public void Reseed(uint seed) {
-            if (seed == 0u) {
+            if (seed == 0u)
                 seed = 0x9E3779B9u;
-            }
 
             State = seed;
         }
@@ -30,9 +28,8 @@ namespace UniGame.StaticEcs.Random {
         public uint Next() {
             unchecked {
                 var x = State;
-                if (x == 0u) {
+                if (x == 0u)
                     x = 0x9E3779B9u;
-                }
 
                 x ^= x << 13;
                 x ^= x >> 17;
@@ -43,9 +40,8 @@ namespace UniGame.StaticEcs.Random {
         }
 
         public int NextInt(int minInclusive, int maxExclusive) {
-            if (maxExclusive <= minInclusive) {
+            if (maxExclusive <= minInclusive)
                 return minInclusive;
-            }
 
             var range = (uint)(maxExclusive - minInclusive);
             return minInclusive + (int)(Next() % range);
@@ -57,21 +53,18 @@ namespace UniGame.StaticEcs.Random {
         }
 
         public float NextFloat(float min, float max) {
-            if (max <= min) {
+            if (max <= min)
                 return min;
-            }
 
             return min + NextFloat() * (max - min);
         }
 
         public bool NextBool(float chance) {
-            if (chance <= 0f) {
+            if (chance <= 0f)
                 return false;
-            }
 
-            if (chance >= 1f) {
+            if (chance >= 1f)
                 return true;
-            }
 
             return NextFloat() < chance;
         }

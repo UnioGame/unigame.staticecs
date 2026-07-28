@@ -21,10 +21,8 @@ namespace UniGame.StaticEcs.Tests
         public StaticEcsTestWorld(WorldConfig config)
         {
             if (World<TWorld>.Status != WorldStatus.NotCreated)
-            {
                 throw new InvalidOperationException(
                     $"Test world `{typeof(TWorld).Name}` is already active.");
-            }
 
             World<TWorld>.Create(config);
             _lifeTime = new LifeTime();
@@ -63,9 +61,7 @@ namespace UniGame.StaticEcs.Tests
                     World<TWorld>.Destroy(withHooks: false);
                 }
                 else if (World<TWorld>.Status == WorldStatus.Initialized)
-                {
                     World<TWorld>.Destroy();
-                }
             }
         }
     }

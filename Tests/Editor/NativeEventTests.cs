@@ -18,9 +18,7 @@ namespace UniGame.StaticEcs.Tests
         public void TearDown()
         {
             if (World<TestEventWorld>.Status != WorldStatus.NotCreated)
-            {
                 World<TestEventWorld>.Destroy();
-            }
         }
 
         [Test]

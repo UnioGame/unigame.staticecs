@@ -39,9 +39,8 @@ namespace UniGame.StaticEcs.Time {
         }
 
         public void SetTimeScale(float value) {
-            if (value < 0f) {
+            if (value < 0f)
                 value = 0f;
-            }
 
             TimeScale = value;
         }

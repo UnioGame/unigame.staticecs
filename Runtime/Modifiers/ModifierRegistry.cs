@@ -10,29 +10,25 @@ namespace UniGame.StaticEcs.Modifiers {
         private readonly ModifierSourceCleanup[] _slots = new ModifierSourceCleanup[MaxSlots];
 
         public void Register(ulong flag, ModifierSourceCleanup cleanup) {
-            if (cleanup == null) {
+            if (cleanup == null)
                 throw new ArgumentNullException(nameof(cleanup));
-            }
 
-            if (!IsSingleBit(flag)) {
+            if (!IsSingleBit(flag))
                 throw new ArgumentException("Flag must be a single power of two.", nameof(flag));
-            }
 
             _slots[Log2(flag)] = cleanup;
         }
 
         public bool IsRegistered(ulong flag) {
-            if (!IsSingleBit(flag)) {
+            if (!IsSingleBit(flag))
                 return false;
-            }
 
             return _slots[Log2(flag)] != null;
         }
 
         public void Invoke(ulong flag, EntityGID source, EntityGID target) {
-            if (!IsSingleBit(flag)) {
+            if (!IsSingleBit(flag))
                 return;
-            }
 
             _slots[Log2(flag)]?.Invoke(source, target);
         }
@@ -61,7 +57,8 @@ namespace UniGame.StaticEcs.Modifiers {
             if ((singleBit & 0x000000000000FF00UL) != 0) { singleBit >>= 8;  n += 8; }
             if ((singleBit & 0x00000000000000F0UL) != 0) { singleBit >>= 4;  n += 4; }
             if ((singleBit & 0x000000000000000CUL) != 0) { singleBit >>= 2;  n += 2; }
-            if ((singleBit & 0x0000000000000002UL) != 0) { n += 1; }
+            if ((singleBit & 0x0000000000000002UL) != 0)
+                n += 1;
             return n;
         }
     }

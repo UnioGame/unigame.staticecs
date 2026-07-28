@@ -19,9 +19,7 @@ namespace UniGame.StaticEcs.Random
         public override UniTask InitializeAsync(ILifeTime lifeTime)
         {
             if (World<TWorld>.HasResource<EcsRng>())
-            {
                 return UniTask.CompletedTask;
-            }
 
             if (World<TWorld>.HasResource<EcsRngConfig>())
             {

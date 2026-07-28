@@ -22,9 +22,8 @@ namespace UniGame.StaticEcs.Tests {
 
             var sameCount = 0;
             for (var i = 0; i < 100; i++) {
-                if (a.Next() == b.Next()) {
+                if (a.Next() == b.Next())
                     sameCount++;
-                }
             }
 
             Assert.Less(sameCount, 5);
