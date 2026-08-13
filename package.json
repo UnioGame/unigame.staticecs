@@ -4,7 +4,7 @@
   "displayName": "UniGame Static ECS",
   "description": "Static ECS runtime tooling and bootstrap for UniGame projects",
   "unity": "2023.2",
-  "version": "2026.0.1",
+  "version": "2026.1.0",
   "license": "MIT",
   "keywords": [
     "unigame",
