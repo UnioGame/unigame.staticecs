@@ -24,5 +24,10 @@
 ## Documentation
 
 - Public documentation is English and follows Capabilities / Usage / Configuration.
-- Every public type and member has at least a one-line XML summary.
+- Public types keep a short English XML summary. Document a public member only when
+  ownership, lifetime, units, zero/null meaning, ordering, failure behavior, or a
+  wire contract is not evident from its name and type.
+- Comments explain why and constraints, not signatures or the next line. Remove
+  stale TODOs and commented-out code; review enforces this policy without a custom
+  analyzer.
 - Link to repository/upstream Static ECS documentation instead of duplicating it.
